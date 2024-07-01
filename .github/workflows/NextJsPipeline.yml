@@ -11,18 +11,38 @@ jobs:
     steps:
       - name : First step job1
         run:  echo " First step job1"
+        
       
       - name : Create a file -  job1
-        run:  touch test_build.txt
-
-
+        run:  echo "job1 file" > job1.txt
   job2:
-    name: Compile
+    name: Comp
     runs-on: ubuntu-latest
     steps:
       - name : First step job2
-        run:  echo " First step job1"
+        run:  echo "job2 file" > job2.txt
       
-      - name : Create a file -  job2
-        run:  touch testCompile.txt
+      - name : verify a file -  job2
+        run:  ls -l job2.txt
+  
+  job3:
+    name: Pub
+    runs-on: ubuntu-latest
+    needs: [job1,job2]
+    steps:
+      - name : First step job2
+        run:  echo " First step job3"
+      
+      - name : Verify a file -  job3
+        run:  ls -l
+  job4:
+    name: Monitor
+    runs-on: ubuntu-latest
+    needs: job3
+    steps:
+      - name : First step job2
+        run:  echo " First step job3"
+      
+      - name : Verify a file -  job3
+        run:  ls -l
   
