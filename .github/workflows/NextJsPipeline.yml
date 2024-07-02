@@ -1,12 +1,12 @@
 name: NextJsPipeline
 
+
 on:
-  push:
-    branches:
-      - master
+  release:
+    types: [created]
 jobs:
   job1:
-    name: release
+    name: build
     runs-on: ubuntu-latest
     steps:
       - name : First step job1
