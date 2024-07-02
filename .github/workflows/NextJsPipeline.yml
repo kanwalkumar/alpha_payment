@@ -6,7 +6,7 @@ on:
       - master
 jobs:
   job1:
-    name: Build
+    name: release
     runs-on: ubuntu-latest
     steps:
       - name : First step job1
@@ -45,7 +45,7 @@ jobs:
 
 
       - uses: actions/download-artifact@v4
-      
+
 
       - name: Display structure of downloaded files
         run: ls -R
